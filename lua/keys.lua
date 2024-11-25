@@ -6,7 +6,3 @@ vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")
 -- NvimTree --
 vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<CR>")
 
--- Fancy write markdown to PDF for dissemination --
-vim.keymap.set('n', "<leader>w", ":!pandoc %:p --pdf-engine=xelatex --to=pdf -o ~/%:t:r.pdf<left><left><left>")
-vim.keymap.set('n', "<leader>W", ":!pandoc %:p --pdf-engine=xelatex --to=pdf -o ~/%:t:r.pdf<cr>")
-
