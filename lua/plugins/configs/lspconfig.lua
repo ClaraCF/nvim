@@ -28,8 +28,9 @@ return function(_, opts)
         },
     }
 
-    lspconfig.clangd.setup {
-    }
+    lspconfig.clangd.setup {}
+
+    lspconfig.zls.setup {}
 
     for server, config in pairs(opts.servers or {}) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)

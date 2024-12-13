@@ -5,7 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 -- Speed up the loading process --
 vim.loader.enable()
 
-vim.g.mapleader = "<Space>"
+vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Tab indentation settings --

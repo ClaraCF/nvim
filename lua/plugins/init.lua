@@ -24,33 +24,32 @@ return {
 
     -- Mason LSP server, debugger and linter Manager --
     {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        config = require 'plugins.configs.mason'
+        'williamboman/mason.nvim',
+        config = require 'plugins.configs.mason',
     },
 
+    {
+        'williamboman/mason-lspconfig.nvim',
+        config = require 'plugins.configs.mason-lspconfig',
+    },
 
     {
         'neovim/nvim-lspconfig',
-        dependencies = { 'saghen/blink.cmp' },
+        dependencies = { 
+            'williamboman/mason.nvim',
+            'mason-lspconfig.nvim',
+            'saghen/blink.cmp'
+        },
         config = require 'plugins.configs.lspconfig',
     },
 
-    -- Completion framework --
-    -- {'hrsh7th/nvim-cmp'},
     {
         "L3MON4D3/LuaSnip",
         build = "make install_jsregexp"
     },
 
-    -- {'hrsh7th/cmp-path'},
-    -- {'hrsh7th/cmp-buffer'},
-
     -- Icons --
     {'nvim-tree/nvim-web-devicons'},
-
-    -- Color Theme --
-    -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
     {
         "EdenEast/nightfox.nvim",
@@ -66,7 +65,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         config = require 'plugins.configs.treesitter',
-        lazy = true,
+        lazy = false,
     },
 
     {
@@ -86,6 +85,12 @@ return {
             }
         },
         config = function(_, opts) require'lsp_signature'.setup(opts) end
+    },
+
+    {
+        "chrisgrieser/nvim-lsp-endhints",
+        event = "LspAttach",
+        opts = {},
     },
 
     {
