@@ -14,57 +14,33 @@ return {
         opts = {},
     },
 
+    {
+        'saghen/blink.cmp',
+        build = 'cargo build --release',
+        lazy = false, -- lazy loading handled internally
+        dependencies = 'rafamadriz/friendly-snippets',
+        opts = require 'plugins.opts.blink',
+    },
+
     -- Mason LSP server, debugger and linter Manager --
     {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-    },
-
-    {
-        'saghen/blink.cmp',
-        version = 'v0.*',
-        lazy = false, -- lazy loading handled internally
-        dependencies = 'rafamadriz/friendly-snippets',
+        config = require 'plugins.configs.mason'
     },
 
 
     {
         'neovim/nvim-lspconfig',
         dependencies = { 'saghen/blink.cmp' },
-        opts = {
-            setup = {
-                rust_analyzer = function()
-                    return true 
-                end,
-            },
-        },
-        config = function(_, opts)
-            local lspconfig = require('lspconfig')
-            for server, config in pairs(opts.servers or {}) do
-                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-                lspconfig[server].setup(config)
-            end
-        end,
+        config = require 'plugins.configs.lspconfig',
     },
 
     -- Completion framework --
     -- {'hrsh7th/nvim-cmp'},
     {
-        'saghen/blink.cmp',
-        lazy = false, -- lazy loading handled internally
-        dependencies = 'rafamadriz/friendly-snippets',
-    },
-
-    -- LSP completion source --
-    -- {'hrsh7th/cmp-nvim-lsp'},
-
-    -- Useful completion sources --
-    -- {'hrsh7th/cmp-nvim-lua'},
-    -- {'hrsh7th/cmp-nvim-lsp-signature-help'},
-
-    {
         "L3MON4D3/LuaSnip",
-        build = "mqake install_jsregexp"
+        build = "make install_jsregexp"
     },
 
     -- {'hrsh7th/cmp-path'},
@@ -81,22 +57,23 @@ return {
         priority = 1000,
     },
 
-    -- ------------------ --
-
-
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
 
     -- Tree Sitter --
-    {'nvim-treesitter/nvim-treesitter'},
-
+    {
+        'nvim-treesitter/nvim-treesitter',
+        config = require 'plugins.configs.treesitter',
+        lazy = true,
+    },
 
     {
         'mrcjkb/rustaceanvim',
         version = '^5', -- Recommended
         lazy = false, -- This plugin is already lazy
+        config = require 'plugins.configs.rustaceanvim',
     },
 
     {
@@ -134,8 +111,18 @@ return {
 
     -- Other --
     {'voldikss/vim-floaterm'},
-    {'RRethy/vim-illuminate'},
-    {'folke/trouble.nvim'},
+
+    -- {'RRethy/vim-illuminate'},
+    {
+        'yamatsum/nvim-cursorline',
+        opts = {},
+    },
+
+    {
+        'folke/trouble.nvim',
+        opts = {},
+        cmd = "Trouble",
+    },
 
     {'numToStr/Comment.nvim'},
 
