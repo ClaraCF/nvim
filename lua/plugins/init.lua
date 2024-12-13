@@ -77,6 +77,18 @@ return {
     },
 
     {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        },
+        config = function(_, opts) require'lsp_signature'.setup(opts) end
+    },
+
+    {
         'saecki/crates.nvim',
         event = { "BufRead Cargo.toml" },
         config = function()
@@ -86,6 +98,7 @@ return {
 
     {
         "glebzlat/arduino-nvim",
+        opts = {},
         config = {
             function() require("arduino-nvim").setup() end,
             filetype = "arduino",

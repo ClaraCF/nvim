@@ -28,6 +28,9 @@ return function(_, opts)
         },
     }
 
+    lspconfig.clangd.setup {
+    }
+
     for server, config in pairs(opts.servers or {}) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
@@ -37,4 +40,18 @@ return function(_, opts)
     -- It conflicts with Rustaceanvim
     lspconfig.rust_analyzer = function() end
     lspconfig.cargo = function() end
+
+    -- Enable function signatures for all attached Language Servers
+    vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+            local bufnr = args.buf
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+            -- if vim.tbl_contains({ 'null-ls' }, client.name) then
+            --     return
+            -- end
+
+            require("lsp_signature").on_attach({}, bufnr)
+        end,
+    })
 end
