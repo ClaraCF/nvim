@@ -28,20 +28,6 @@ return function(_, opts)
         },
     }
 
-    lspconfig.clangd.setup {}
-
-    lspconfig.zls.setup {}
-
-    for server, config in pairs(opts.servers or {}) do
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
-    end
-
-    -- Disable Rust Analyzer
-    -- It conflicts with Rustaceanvim
-    lspconfig.rust_analyzer = function() end
-    lspconfig.cargo = function() end
-
     -- Enable function signatures for all attached Language Servers
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)

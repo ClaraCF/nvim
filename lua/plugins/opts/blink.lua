@@ -1,10 +1,10 @@
 return {
-    keymap = { preset = "super-tab" },
+    keymap = { preset = 'super-tab' },
 
     appearance = {
-        -- nightfox theme does not support this plugin
+        -- Nightfox theme does not support this plugin
         use_nvim_cmp_as_default = true,
-        nerd_font_variant = "normal",
+        nerd_font_variant = 'normal',
     },
 
     snippets = {
@@ -19,8 +19,18 @@ return {
     },
 
     sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-        -- optionally disable cmdline completions
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+
+        providers = {
+            -- Dont show LuaLS require statements when lazydev has items
+            lazydev = {
+                name = 'LazyDev',
+                module = 'lazydev.integrations.blink',
+                fallbacks = { 'lsp' }
+            },
+        },
+
+        -- Optionally disable cmdline completions
         -- cmdline = {},
     }
 }

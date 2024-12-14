@@ -3,6 +3,12 @@ return {
     {'andweeb/presence.nvim'},
 
     {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = require 'plugins.opts.lazydev',
+    },
+
+    {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
