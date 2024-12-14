@@ -34,9 +34,13 @@ return function(_, opts)
             local bufnr = args.buf
             local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-            -- if vim.tbl_contains({ 'null-ls' }, client.name) then
-            --     return
-            -- end
+            local lsp_blacklist = {
+
+            }
+
+            if client ~= nil and vim.tbl_contains(lsp_blacklist, client.name) then
+                return
+            end
 
             require("lsp_signature").on_attach({}, bufnr)
         end,
