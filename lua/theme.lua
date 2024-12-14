@@ -13,10 +13,3 @@ require('lualine').setup ({
 
 vim.notify = require('notify')
 
-vim.notify("Ganó Chavez.", "error", {
-  title = "Error democrático",
-})
-
-vim.notify("My mamagüebo reaction.", "warn", {
-    title = "Mamagüebo"
-})
