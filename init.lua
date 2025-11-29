@@ -21,10 +21,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Load Plugin Manager --
-local plugins = require('plugins')
-local lazy_config = require('lazy_config')
-require('lazy').setup(plugins, lazy_config)
+require('config.lazy')
 
 require('theme')
 require('opts')
 require('keys')
+

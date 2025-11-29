@@ -1,7 +1,13 @@
 return function(_, opts)
-    local lspconfig = require('lspconfig')
+    --local lspconfig = require('lspconfig')
+    --local lspconfig = vim.lsp.config("lspconfig.lua")
 
-    lspconfig.lua_ls.setup {
+    -- lspconfig.gleam.setup({})
+
+    --lspconfig.jdtls.setup({})
+
+
+    vim.lsp.config('lua_ls', {
         settings = {
             Lua = {
                 runtime = {
@@ -26,7 +32,7 @@ return function(_, opts)
                 },
             },
         },
-    }
+    })
 
     -- Enable function signatures for all attached Language Servers
     vim.api.nvim_create_autocmd("LspAttach", {

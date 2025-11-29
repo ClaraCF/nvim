@@ -6,3 +6,5 @@ vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")
 -- NvimTree --
 vim.keymap.set('n', "<leader>ff", ":NvimTreeToggle<CR>")
 
+-- LSP Code Actions --
+vim.keymap.set('n', "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
