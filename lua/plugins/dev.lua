@@ -42,6 +42,7 @@ return {
 
     {
         'numToStr/Comment.nvim',
+        event = 'BufRead',
         opts = {},
     },
 
@@ -64,8 +65,9 @@ return {
     },
 
     {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        'folke/todo-comments.nvim',
+        event = 'BufRead',
+        dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {},
     },
 
