@@ -1,6 +1,6 @@
 return function(_, opts)
     --local lspconfig = require('lspconfig')
-    --local lspconfig = vim.lsp.config("lspconfig.lua")
+    --local lspconfig = vim.lsp.config('lspconfig.lua')
 
     -- lspconfig.gleam.setup({})
 
@@ -24,7 +24,7 @@ return function(_, opts)
                 },
                 workspace = {
                     -- Make the server aware of Neovim runtime files
-                    library = vim.api.nvim_get_runtime_file("", true),
+                    library = vim.api.nvim_get_runtime_file('', true),
                 },
                 -- Do not send telemetry data containing a randomized but unique identifier
                 telemetry = {
@@ -35,7 +35,7 @@ return function(_, opts)
     })
 
     -- Enable function signatures for all attached Language Servers
-    vim.api.nvim_create_autocmd("LspAttach", {
+    vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
             local bufnr = args.buf
             local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -48,7 +48,7 @@ return function(_, opts)
                 return
             end
 
-            require("lsp_signature").on_attach({}, bufnr)
+            require('lsp_signature').on_attach({}, bufnr)
         end,
     })
 end

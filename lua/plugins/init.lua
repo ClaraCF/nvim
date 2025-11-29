@@ -7,7 +7,7 @@ return {
         ft = 'lua',
         opts = require 'plugins.opts.lazydev',
     },
-    
+
     {
         'voldikss/vim-floaterm',
         cmd = {'FloatermToggle', 'FloatermNew'},

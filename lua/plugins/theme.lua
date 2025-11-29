@@ -16,11 +16,7 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
 
-    {
-        'EdenEast/nightfox.nvim',
-        lazy = true,
-        priority = 1000,
-    },
+    { 'EdenEast/nightfox.nvim' },
 
     {
         'nvimdev/dashboard-nvim',
@@ -30,7 +26,7 @@ return {
                 -- config
             }
         end,
-        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
 
     {

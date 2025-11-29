@@ -5,70 +5,51 @@
 
 return {
     {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp"
+        'L3MON4D3/LuaSnip',
+        build = 'make install_jsregexp',
+        cmd = { 'LuaSnipListAvailable', 'LuaSnipUnlinkCurrent' },
     },
 
     -- Tree Sitter --
     {
         'nvim-treesitter/nvim-treesitter',
-        config = require 'plugins.configs.treesitter',
         lazy = false,
+        config = require 'plugins.configs.treesitter',
     },
 
     {
-        "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
+        'ray-x/lsp_signature.nvim',
+        event = 'InsertEnter',
         opts = {
             bind = true,
             handler_opts = {
-                border = "rounded"
+                border = 'rounded'
             }
         },
         config = function(_, opts) require 'lsp_signature'.setup(opts) end
     },
 
     {
-        "chrisgrieser/nvim-lsp-endhints",
-        event = "LspAttach",
-        opts = {},
+        'chrisgrieser/nvim-lsp-endhints',
+        event = 'LspAttach',
     },
 
     {
         'windwp/nvim-autopairs',
-        opts = {},
-    },
-
-    { 'numToStr/Comment.nvim' },
-
-    {
-        'nvim-tree/nvim-tree.lua',
-        opts = {},
+        event = 'InsertEnter',
+        config = true
     },
 
     {
-        'stevearc/conform.nvim',
+        'numToStr/Comment.nvim',
         opts = {},
     },
 
     {
-        'saghen/blink.cmp',
-        build = 'cargo build --release',
-        lazy = false, -- lazy loading handled internally
-        dependencies = 'rafamadriz/friendly-snippets',
-        opts = require 'plugins.opts.blink',
-    },
-
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {},
-    },
-
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
+        'lukas-reineke/indent-blankline.nvim',
+        main = 'ibl',
+        ---@module 'ibl'
+        ---@type ibl.config
     },
 
     {
@@ -78,8 +59,40 @@ return {
 
     {
         'folke/trouble.nvim',
+        cmd = 'Trouble',
         opts = {},
-        cmd = "Trouble",
+        keys = {
+            {
+                '<leader>xx',
+                '<cmd>Trouble diagnostics toggle<cr>',
+                desc = 'Diagnostics (Trouble)',
+            },
+            {
+                '<leader>xX',
+                '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+                desc = 'Buffer Diagnostics (Trouble)',
+            },
+            {
+                '<leader>cs',
+                '<cmd>Trouble symbols toggle focus=false<cr>',
+                desc = 'Symbols (Trouble)',
+            },
+            {
+                '<leader>cl',
+                '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+                desc = 'LSP Definitions / references / ... (Trouble)',
+            },
+            {
+                '<leader>xL',
+                '<cmd>Trouble loclist toggle<cr>',
+                desc = 'Location List (Trouble)',
+            },
+            {
+                '<leader>xQ',
+                '<cmd>Trouble qflist toggle<cr>',
+                desc = 'Quickfix List (Trouble)',
+            },
+        },
     },
 }
 

@@ -13,11 +13,11 @@ return function()
     --     ['rust_analyzer'] = function() end,
     -- }
     --
-    require("mason-lspconfig").setup {
+    require('mason-lspconfig').setup {
         automatic_enable = {
             exclude = {
-                "rust_analyzer",
-                "ts_ls"
+                'rust_analyzer',
+                'ts_ls'
             }
         }
     }
