@@ -46,6 +46,30 @@ return {
     },
 
     {
+        'nvim-tree/nvim-tree.lua',
+        opts = {},
+    },
+
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+    },
+
+    {
+        'saghen/blink.cmp',
+        build = 'cargo build --release',
+        lazy = false, -- lazy loading handled internally
+        dependencies = 'rafamadriz/friendly-snippets',
+        opts = require 'plugins.opts.blink',
+    },
+
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
+    },
+
+    {
         'lukas-reineke/indent-blankline.nvim',
         event = 'BufReadPre',
         main = 'ibl',
@@ -64,6 +88,7 @@ return {
         'folke/trouble.nvim',
         cmd = 'Trouble',
         opts = {},
+        -- TODO: Maybe find a way to separate this into the keys.lua?
         keys = {
             {
                 '<leader>xx',
